@@ -1,10 +1,18 @@
-# Ignore Docker files to force Nixpacks usage
+# Force Nixpacks usage - ignore all Docker files
 Dockerfile
 .dockerignore
 docker-compose.yml
 docker-compose.yaml
+Dockerfile.*
 
 # Ignore development files
 *.log
 .env.local
 .env.development
+.env.test
+
+# Ignore large files that might slow build
+*.ipynb
+*.md
+DEPLOYMENT_GUIDE.md
+README.md

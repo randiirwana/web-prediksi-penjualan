@@ -1,0 +1,12 @@
+# Ignore Docker files completely
+Dockerfile
+.dockerignore
+docker-compose.yml
+docker-compose.yaml
+
+# Ignore development files
+*.ipynb
+*.log
+.env*
+README.md
+DEPLOYMENT_GUIDE.md
