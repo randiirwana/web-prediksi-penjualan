@@ -176,7 +176,15 @@ if __name__ == '__main__':
     print("🚀 Starting Flask application...")
     print(f"📱 Aplikasi akan berjalan di port: {port}")
     print(f"🔧 Debug mode: {debug}")
-    print("📊 Status endpoint: /status")
-    print("🔄 Reload endpoint: /reload")
+    print(f"🌍 Host: 0.0.0.0")
+    print("📊 Health endpoint: /health")
+    print("🔄 Chart data endpoint: /chart-data")
+    print("🔮 Predict endpoint: /predict")
+    print("📈 Forecast endpoint: /forecast")
+    
+    # Log model status
+    print(f"🤖 Model loaded: {model is not None}")
+    print(f"📏 Scaler loaded: {scaler is not None}")
+    print(f"📊 Dataset loaded: {df_daily is not None}")
     
     app.run(debug=debug, host='0.0.0.0', port=port)

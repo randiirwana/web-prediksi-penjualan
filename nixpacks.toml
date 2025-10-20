@@ -12,3 +12,8 @@ cmds = ["echo 'Build phase completed'"]
 
 [start]
 cmd = "gunicorn --workers 2 --threads 4 --timeout 120 --bind 0.0.0.0:$PORT app:app"
+
+[variables]
+PYTHON_VERSION = "3.12.6"
+PYTHONUNBUFFERED = "1"
+PIP_NO_CACHE_DIR = "1"
