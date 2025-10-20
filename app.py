@@ -156,6 +156,16 @@ def get_chart_data():
     except Exception as e:
         return jsonify({'error': f'Error loading chart data: {str(e)}'})
 
+@app.route('/health')
+def health_check():
+    """Health check endpoint untuk Railway"""
+    return jsonify({
+        'status': 'healthy',
+        'model_loaded': model is not None,
+        'scaler_loaded': scaler is not None,
+        'dataset_loaded': df_daily is not None
+    })
+
 if __name__ == '__main__':
     import os
     
