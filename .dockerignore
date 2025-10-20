@@ -14,3 +14,10 @@ venv/
 *.svg
 node_modules/
 
+# Additional ignores for faster build but keep model/data
+.mypy_cache/
+.vscode/
+*.log
+README.md
+DEPLOYMENT_GUIDE.md
+
