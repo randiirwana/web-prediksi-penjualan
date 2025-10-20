@@ -181,7 +181,7 @@ if __name__ == '__main__':
     print("🔄 Chart data endpoint: /chart-data")
     print("🔮 Predict endpoint: /predict")
     print("📈 Forecast endpoint: /forecast")
-    print("🏗️ Using Nixpacks builder - Dockerfile removed")
+    print("🐳 Using Dockerfile builder")
     
     # Log model status
     print(f"🤖 Model loaded: {model is not None}")

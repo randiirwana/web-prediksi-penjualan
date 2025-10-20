@@ -1,24 +1,30 @@
 FROM python:3.12-slim
 
-# Pastikan log tampil langsung dan tidak membuat .pyc
+# Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
+ENV PORT=8080
 
+# Set work directory
 WORKDIR /app
 
-# Instal dependensi terlebih dahulu (layer cache)
-COPY requirements.txt ./
-RUN pip install --upgrade pip setuptools wheel \
-    && pip install --no-cache-dir -r requirements.txt
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    gcc \
+    && rm -rf /var/lib/apt/lists/*
 
-# Salin source code
+# Copy requirements first for better caching
+COPY requirements.txt .
+
+# Install Python dependencies
+RUN pip install --upgrade pip setuptools wheel && \
+    pip install --no-cache-dir -r requirements.txt
+
+# Copy application code
 COPY . .
 
-# Koyeb menyediakan PORT; default ke 8080
-ENV PORT=8080
-EXPOSE 8080
+# Expose port
+EXPOSE $PORT
 
-# Jalankan via gunicorn (app adalah objek Flask di app.py)
-CMD ["gunicorn", "--workers", "2", "--threads", "4", "--timeout", "120", "--bind", "0.0.0.0:${PORT}", "app:app"]
-
-
+# Run the application
+CMD ["gunicorn", "--workers", "2", "--threads", "4", "--timeout", "120", "--bind", "0.0.0.0:$PORT", "app:app"]
