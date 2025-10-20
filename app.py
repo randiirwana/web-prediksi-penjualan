@@ -3,11 +3,6 @@ import numpy as np
 import pandas as pd
 import joblib
 from tensorflow.keras.models import load_model
-import matplotlib.pyplot as plt
-import matplotlib
-matplotlib.use('Agg')  # Use non-interactive backend
-import base64
-import io
 from datetime import datetime, timedelta
 import warnings
 warnings.filterwarnings('ignore')
