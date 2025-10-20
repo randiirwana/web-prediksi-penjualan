@@ -23,8 +23,11 @@ RUN pip install --upgrade pip setuptools wheel && \
 # Copy application code
 COPY . .
 
-# Expose port
-EXPOSE $PORT
+# Make startup script executable
+RUN chmod +x start.sh
 
-# Run the application
-CMD ["gunicorn", "--workers", "2", "--threads", "4", "--timeout", "120", "--bind", "0.0.0.0:$PORT", "app:app"]
+# Expose port
+EXPOSE 8080
+
+# Run the application using startup script
+CMD ["./start.sh"]
